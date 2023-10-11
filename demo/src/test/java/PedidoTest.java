@@ -1,14 +1,14 @@
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import com.example.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -128,6 +128,8 @@ public class PedidoTest{
         pedido.calcularValorTotal();
 
         Assertions.assertEquals(pedido.chamadas, 1);
+
+        verify(descontoService, times(1)).calcularDesconto(anyDouble());
     }
 
 }
